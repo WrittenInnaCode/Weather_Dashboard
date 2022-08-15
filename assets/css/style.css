@@ -1,0 +1,54 @@
+/* body {
+    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Open Sans', sans-serif;
+} */
+
+#searchBox {
+    height: 100vh;
+}
+
+
+#searchBtn {
+    border-radius: 20px;
+    margin-left: 0.5em;
+}
+#searchBtn:hover {
+    cursor: pointer;
+}
+
+#enterCity {
+border-radius: 20px;
+font-family: inherit;
+border: solid rgb(58, 147, 241) 2px;
+}
+
+.card {
+    background-color: white;
+    padding: 1.5em;
+    border-radius: 35px;
+    border: solid orange 2px;
+    margin: 2em;
+    line-height: 1.5;
+}
+
+#card5 {
+    background-color: white;
+    padding: 1.5em;
+    border-radius: 35px;
+    border: solid orange 2px;
+    line-height: 1.5;
+}
+
+.futureWeather {
+    margin: 1em;
+}
+
+.icon {
+    width: 70px;
+}
+
+#uvIndex {
+    width: 20%;
+    border-radius: 5px;
+}
+
