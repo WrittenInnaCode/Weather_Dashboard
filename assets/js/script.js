@@ -22,6 +22,11 @@ function handleSubmit(event) { // when the search button is activated
     // console.log(searchHistory);
 }
 
+// Clicking on a city in search history displays current and future conditions for that city
+$(document).on("click", ".list-group-item", function() {
+    var listCity = $(this).text();
+    fetchCoordinates(listCity);
+});
 
 
 function fetchWeather(data){
@@ -29,17 +34,20 @@ function fetchWeather(data){
     
     fetch("https://api.openweathermap.org/data/2.5/onecall?lat=" + data.lat + "&lon=" + data.lon + "&units=imperial&exclude=minutely,hourly&appid=" + apiKey)
     .then((responce) => responce.json())
-    .then((data) => displayCurrentWeather(data.current, city)) 
+    .then((data) => {
+        displayCurrentWeather(data.current, city)
+        displayDailyWeather(data)
+    })
 }
 
 
-
-function displayCurrentWeather(data, city){
+// Today's weather forecast
+function displayCurrentWeather(data, city){ 
     document.querySelector("#weatherHidden").classList.remove("d-none");
     document.querySelector("#forecastHeader").classList.remove("d-none");
     document.querySelector("#forecast").classList.remove("d-none");
 
-        $(".dateToday").text(moment().format('MM/DD/YYYY'));
+        $(".dateToday").text(moment().format('MM/DD/YYYY')); // Today's date
         const name = city;
         const icon = data.weather[0].icon;
         const temp = data.temp;
@@ -67,6 +75,26 @@ function displayCurrentWeather(data, city){
 }
 
 
+// 5-day forecast 
+function displayDailyWeather(data){ 
+
+    for (let i = 0; i<5; i++){
+
+        $("#dateForecast" + i).text(moment().add(i+1, "days").format('MM/DD/YYYY')); //Date for 5 days ahead
+
+        let icon = data.daily[i].weather[0].icon;
+        let temp = data.daily[i].temp.day;
+        let humidity = data.daily[i].humidity;
+        let speed = data.daily[i].wind_speed;
+
+
+        document.querySelector("#icon" + i).src = "https://openweathermap.org/img/wn/" + icon + ".png";
+        document.querySelector("#temp" + i).innerText = "Temperature: " + temp + "F";
+        document.querySelector("#humidity" + i).innerText = "Humidity: " + humidity + "%";
+        document.querySelector("#wind" + i).innerText = "Wind speed: " + speed + " mph";
+    }
+}
+
 
 
 // search when clicked the search button
@@ -80,13 +108,6 @@ document.querySelector(".input-area").addEventListener("keyup", function(event) 
         handleSubmit();
     }
 });
-
-// Clicking on a city in search history displays current and future conditions for that city
-$(document).on("click", ".list-group-item", function() {
-    var listCity = $(this).text();
-    fetchCoordinates(listCity);
-});
-
 
 
 
