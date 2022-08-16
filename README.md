@@ -10,3 +10,14 @@ When the user opens the weather dashboard, they can search for a city in the inp
 
 
 ## Usage
+
+User can find deployed app at: 
+[https://writteninnacode.github.io/Weather_Dashboard/](https://writteninnacode.github.io/Weather_Dashboard/)
+
+
+The repo can be found at:
+[https://github.com/WrittenInnaCode/Weather_Dashboard](https://github.com/WrittenInnaCode/Weather_Dashboard)
+
+
+![alt screen shot](/assets/images/Screen%20Shot%202022-08-15%20at%206.24.11%20PM.png)
+![alt screen shot](/assets/images/Screen%20Shot%202022-08-15%20at%206.24.47%20PM.png)
